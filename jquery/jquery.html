@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>JQuery Application Example</title>
+        <link rel="stylesheet" href="jquery.css" />
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    </head>
+<body>
+    <div class="container-container">
+    <div class="container_1">
+        <div class="todo-header">
+            <h2>Opret Opgaver!</h2>
+       </div>
+        <div class="todo-body">
+            
+            <input
+            type="text"
+            id="todoText"
+            class = "todo-input"
+            placeholder = "Opgave navn"
+            />
+            <img
+                src="../../images/plus.png"
+                alt="+"
+                id="AddUpdateClick"
+                onclick="CreateToDoItems();"
+            />
+        </div>
+        <h5 id="Alert"></h5>
+
+    </div>
+    <div class ="container_2">
+        <div class="todo-header">
+            <h2>Opgave Liste:</h2>
+       </div>
+       <ul id="list-items" class="list-items"></ul>
+
+
+
+
+    </div>
+    </div>
+    <script type="text/javascript" src="jquery.js"></script>
+</body>1
+</html>

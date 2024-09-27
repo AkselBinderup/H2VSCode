@@ -6,8 +6,6 @@
   box-sizing: border-box;
 }
 body {
-    /* background: #78c1f3; */
-    /* background: royalblue; */
     background: royalblue;
     min-height: 100vh;
     display: flex;
