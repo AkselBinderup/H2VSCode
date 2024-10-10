@@ -85,6 +85,7 @@ $(document).ready(function() {
     }
 
     window.DeleteToDoItems = function(element){
+        
         const li = $(element).closest("li");
         const itemText = li.find("div").first().text().trim();
 
@@ -95,7 +96,7 @@ $(document).ready(function() {
                 return false;
             }
         });
-
+            
         if (index !== -1) {
             todo.splice(index, 1);  
         }
@@ -114,18 +115,15 @@ $(document).ready(function() {
         $.each(todo, function (i, item) {
             if (item.item === itemText) {
                 index = i;
-                return false; // Break out of the loop
+                return false; 
             }
         });
             if(index !== -1){
             $("#todoText").val(todo[index].item); //sætter teksten i inputfeltet
             currentIndex = index;
             $("#AddUpdateClick").text("Update"); //ændrerknaptekst til update
-
         }
-    }
-
-    
+    }    
     
     function setAlertMessage(message) {
         $("#Alert").text(message);

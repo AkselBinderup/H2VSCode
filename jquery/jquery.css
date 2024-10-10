@@ -88,12 +88,11 @@ body {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    background: #edeef0;
+    background: gainsboro;
     margin-bottom: 10px;
     border-radius: 5px;
   }
   
-  /* Alert */
   h5 {
     text-align: center;
     margin-bottom: 10px;
