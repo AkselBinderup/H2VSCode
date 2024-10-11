@@ -6,28 +6,16 @@
     <title>Lars Api Calls</title>
     <link rel="stylesheet" href="styles.css">
 </head>
-<body onload = "loadStudents()">
-    <h1>Elevhåndterings system</h1>
-    
-    <section id="student-list-section">
-        <h2>Elever:</h2>
-        <button onclick="loadStudents()">Genopfrisk elevliste</button>
-        <ul id="student-list"></ul>
-    </section>
-
-    <section id="student-details-section">
-        <h2 id="student-details-h2">Elev detaljer</h2>
-        <div id="student-details"></div>
-    </section>
-
-    <section id="add-student-section">
-        <h2>Tilføj elev</h2>
-        <form id="add-student-form">
-            <input type="text" id="student-name" placeholder="Navn" required />
-            <input type="number" id="student-team-id" placeholder="Hold ID" required />
-            <button type="button" onclick="addStudent()">Tilføj elev</button>
-        </form>
-    </section>
+<body>
+    <nav>
+        <ul>
+            <li><a href="#Students" onclick="loadSection('students')">Elever</a></li>
+            <li><a href="#Courses" onclick="loadSection('courses')">Courses</a></li>
+            <li><a href="#Teams" onclick="loadSection('teams')">Teams</a></li>
+        </ul>
+    </nav>
+    <main id="content-area">
+    </main>
     <script src="./dist/app.js" type="module"></script>
 </body>
 </html>

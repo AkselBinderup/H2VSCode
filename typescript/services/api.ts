@@ -1,3 +1,5 @@
+import { Student } from "../interfaces/mainPageModels.js";
+
 const API_URL = 'https://studentwebapi.buchwaldshave34.dk/api';
 
 export async function getStudents(includeRelations = false){
@@ -10,14 +12,14 @@ export async function  getStudent (id: number) {
     return await response.json();    
 }
 
-export async function createStudent (student: {studentName: string; studentLastName: string; teamID: number}) {
+export async function createStudent (student: Student) {
     const response = await fetch(`${API_URL}/Student/CreateStudent`, {
         method: 'POST',
         headers: {'Content-Type': 'application/json'},
         body: JSON.stringify({
             studentName: student.studentName, 
             studentLastName: student.studentLastName,
-            teamID: student.teamID,
+            teamID: student.team.teamID,
         }),
     });
  
@@ -47,12 +49,13 @@ export async function getCoursesByStudent(studentId: number){
 }
 
 export async function addCourseToStudent(studentId: number, courseIds: number[]){
-    const response = await fetch(`${API_URL}/StudentCourse/CreateStudentCourse/${studentId}/`, {
-        method: 'PUT',
-        headers: { 'Content-Type' : 'application/JSON'},
-        body: JSON.stringify({studentId, courseIds})
-    });
-    return await response.json();
+    for(const item in courseIds){
+        const response = await fetch(`${API_URL}/StudentCourse/CreateStudentCourse`, {
+            method: 'PUT',
+            headers: { 'Content-Type' : 'application/JSON'},
+            body: JSON.stringify({studentId, item})
+        });
+    }
 }
 
 export async function getAllCourses() {

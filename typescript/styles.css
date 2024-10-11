@@ -71,3 +71,7 @@ input:focus {
     border-color: royalblue; 
     outline: none; 
 }
+
+.selected {
+    background-color: #d3d3d3; 
+}

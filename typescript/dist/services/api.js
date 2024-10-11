@@ -28,7 +28,7 @@ export function createStudent(student) {
             body: JSON.stringify({
                 studentName: student.studentName,
                 studentLastName: student.studentLastName,
-                teamID: student.teamID,
+                teamID: student.team.teamID,
             }),
         });
         if (!response.ok) {
@@ -61,12 +61,13 @@ export function getCoursesByStudent(studentId) {
 }
 export function addCourseToStudent(studentId, courseIds) {
     return __awaiter(this, void 0, void 0, function* () {
-        const response = yield fetch(`${API_URL}/StudentCourse/CreateStudentCourse/${studentId}/`, {
-            method: 'PUT',
-            headers: { 'Content-Type': 'application/JSON' },
-            body: JSON.stringify({ studentId, courseIds })
-        });
-        return yield response.json();
+        for (const item in courseIds) {
+            const response = yield fetch(`${API_URL}/StudentCourse/CreateStudentCourse`, {
+                method: 'PUT',
+                headers: { 'Content-Type': 'application/JSON' },
+                body: JSON.stringify({ studentId, item })
+            });
+        }
     });
 }
 export function getAllCourses() {
@@ -123,3 +124,4 @@ export function updateteam(id, updatedFields) {
         return yield response.json();
     });
 }
+//# sourceMappingURL=api.js.map

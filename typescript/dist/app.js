@@ -8,9 +8,31 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 import { getStudents, createStudent, deleteStudent, getStudent, getCoursesByStudent, getAllCourses, addCourseToStudent } from './services/api.js';
+import { loadCoursesView } from './views/coursesView.js';
+import { loadStudentView } from './views/studentView.js';
 const studentListElement = document.getElementById('student-list');
 const studentDetailsElement = document.getElementById('student-details');
 const studentHeaderElement = document.getElementById('student-details-h2');
+const contentArea = document.getElementById('content-area');
+// Content Area Section
+function loadSection(section) {
+    contentArea.innerHTML = '';
+    switch (section) {
+        case 'students':
+            loadStudentView();
+            break;
+        case 'courses':
+            loadCoursesView();
+            break;
+        case 'team':
+            // loadTeamsView();
+            break;
+        default:
+            contentArea.innerHTML = '<p>Section not found.</p>';
+            break;
+    }
+}
+// Content Area Section
 function loadStudents() {
     return __awaiter(this, void 0, void 0, function* () {
         const students = yield getStudents();
@@ -93,21 +115,11 @@ function addCourse(studentID, courseIds) {
         yield addCourseToStudent(studentID, courseIds);
     });
 }
-function addStudent() {
+function addStudent(student, teamIDInput) {
     return __awaiter(this, void 0, void 0, function* () {
-        const nameInput = document.getElementById('student-name');
-        const teamIDInput = document.getElementById('student-team-id');
-        const student = {
-            studentName: nameInput.value.split(' ')[0],
-            studentLastName: nameInput.value.split(' ').slice(1).join(' '),
-            teamID: parseInt(teamIDInput.value),
-        };
         try {
-            console.log("Creating student with:", student);
             yield createStudent(student);
             console.log("Student created successfully.");
-            nameInput.value = '';
-            teamIDInput.value = '';
             yield loadStudents();
         }
         catch (error) {
@@ -119,3 +131,5 @@ window.loadStudents = loadStudents;
 window.addStudent = addStudent;
 window.deleteStudent = deleteStudent;
 window.showStudentDetails = showStudentDetails;
+window.loadSection = loadSection;
+//# sourceMappingURL=app.js.map

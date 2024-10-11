@@ -1,8 +1,35 @@
+import { Student, Course, Team } from './interfaces/mainPageModels.js';
 import { getStudents, createStudent, deleteStudent, getStudent, getCoursesByStudent, getAllCourses, addCourseToStudent } from './services/api.js';
+import { loadCoursesView } from './views/coursesView.js';
+import { loadStudentView } from './views/studentView.js';
 
 const studentListElement = document.getElementById('student-list') as HTMLUListElement;
 const studentDetailsElement = document.getElementById('student-details') as HTMLDivElement;
 const studentHeaderElement = document.getElementById('student-details-h2') as any;
+const contentArea = document.getElementById('content-area') as HTMLDivElement;
+
+// Content Area Section
+
+function loadSection(section:string) {
+    contentArea.innerHTML = '';
+    switch(section){
+        case 'students':
+            loadStudentView();
+            break;
+        case 'courses':
+            loadCoursesView();
+            break;
+        case 'team':
+            // loadTeamsView();
+            break;
+        default: 
+            contentArea.innerHTML = '<p>Section not found.</p>';
+            break;
+    }
+}
+
+
+// Content Area Section
 
 
 async function loadStudents() {
@@ -68,7 +95,6 @@ async function loadCoursesForStudent(student:any) {
         li.onclick = () => {
             courses.push(course.courseId); 
             li.classList.add('clicked');
-            
         }
         studentDetailsElement.appendChild(li);
     });
@@ -85,20 +111,10 @@ async function addCourse(studentID: number, courseIds:number[]) {
     await addCourseToStudent(studentID, courseIds); 
 }
 
-async function addStudent() {
-    const nameInput = document.getElementById('student-name') as HTMLInputElement;
-    const teamIDInput = document.getElementById('student-team-id') as HTMLInputElement;
-    const student = {
-        studentName: nameInput.value.split(' ')[0],  
-        studentLastName: nameInput.value.split(' ').slice(1).join(' '),  
-        teamID: parseInt(teamIDInput.value),
-    };
+async function addStudent(student: Student, teamIDInput: number) {
     try {
-        console.log("Creating student with:", student);
         await createStudent(student);
         console.log("Student created successfully.");
-        nameInput.value = '';
-        teamIDInput.value = '';
         await loadStudents(); 
     } catch (error) {
         console.error("Error creating student:", error);
@@ -109,3 +125,4 @@ async function addStudent() {
 (window as any).addStudent = addStudent;
 (window as any).deleteStudent = deleteStudent;
 (window as any).showStudentDetails = showStudentDetails;
+(window as any).loadSection = loadSection;
