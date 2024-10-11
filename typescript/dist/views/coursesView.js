@@ -108,6 +108,7 @@ function addStudentToCourses(student, courses) {
         (_a = document.getElementById('add-selected-student-to-teams')) === null || _a === void 0 ? void 0 : _a.addEventListener('click', () => {
             if (selectedCourses.length > 0) {
                 addCourseToStudent(student.studentID, selectedCourses);
+                displayAllCourses(courses);
             }
             else {
                 console.log('ingen kurser valgt');

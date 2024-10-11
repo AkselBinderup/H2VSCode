@@ -101,6 +101,7 @@ async function addStudentToCourses(student:Student, courses: Course[]) {
     document.getElementById('add-selected-student-to-teams')?.addEventListener('click', () =>{
         if(selectedCourses.length > 0){
             addCourseToStudent(student.studentID, selectedCourses);
+            displayAllCourses(courses);
         }
         else{
             console.log('ingen kurser valgt');

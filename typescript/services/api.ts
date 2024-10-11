@@ -51,7 +51,7 @@ export async function getCoursesByStudent(studentId: number){
 export async function addCourseToStudent(studentId: number, courseIds: number[]){
     for(const item in courseIds){
         const response = await fetch(`${API_URL}/StudentCourse/CreateStudentCourse`, {
-            method: 'PUT',
+            method: 'POST',
             headers: { 'Content-Type' : 'application/JSON'},
             body: JSON.stringify({studentId, item})
         });

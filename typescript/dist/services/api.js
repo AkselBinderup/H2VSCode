@@ -63,7 +63,7 @@ export function addCourseToStudent(studentId, courseIds) {
     return __awaiter(this, void 0, void 0, function* () {
         for (const item in courseIds) {
             const response = yield fetch(`${API_URL}/StudentCourse/CreateStudentCourse`, {
-                method: 'PUT',
+                method: 'POST',
                 headers: { 'Content-Type': 'application/JSON' },
                 body: JSON.stringify({ studentId, item })
             });
