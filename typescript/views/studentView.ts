@@ -43,6 +43,7 @@ async function loadIndividualStudent(student: Student) {
     <section>
         <p>Navn: ${student.studentName} ${student.studentLastName}</p>
         <p>Hold: ${student.team.teamName? student.team.teamName : 'Ingen hold'}</p>
+
         <button id="delete-button">Slet elev</button>
     </section>
     `

@@ -44,7 +44,7 @@ export async function deleteStudent(id: number){
 }
 
 export async function getCoursesByStudent(studentId: number){
-    const response = await fetch(`${API_URL}/StudentCourse/GetCoursesWithStudentID/${studentId}`);
+    const response = await fetch(`${API_URL}/api/StudentCourse/GetCoursesWithStudentID/${studentId}`);
     return await response.json();
 }
 

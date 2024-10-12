@@ -51,8 +51,8 @@ function loadIndividualStudent(student) {
     <section>
         <p>Navn: ${student.studentName} ${student.studentLastName}</p>
         <p>Hold: ${student.team.teamName ? student.team.teamName : 'Ingen hold'}</p>
+
         <button id="delete-button">Slet elev</button>
-        <button id="show-courses-button>Vis kurser</button>
     </section>
     `;
         const deleteButton = document.getElementById('delete-button');

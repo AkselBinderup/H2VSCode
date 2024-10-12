@@ -55,7 +55,7 @@ export function deleteStudent(id) {
 }
 export function getCoursesByStudent(studentId) {
     return __awaiter(this, void 0, void 0, function* () {
-        const response = yield fetch(`${API_URL}/StudentCourse/GetCoursesWithStudentID/${studentId}`);
+        const response = yield fetch(`${API_URL}/api/StudentCourse/GetCoursesWithStudentID/${studentId}`);
         return yield response.json();
     });
 }
